@@ -1,0 +1,28 @@
+# install STAR
+mkdir -p /short/sd34/ap5514/myapps/star/2.6.0c
+export PATH=/short/sd34/ap5514/myapps/star/2.6.0cbin:$PATH
+cd /short/sd34/ap5514/myapps/star/2.6.0c
+wget https://github.com/alexdobin/STAR/archive/2.6.0c.tar.gz
+tar -xzf 2.6.0c.tar.gz
+cd STAR-2.6.0c
+
+# compiling optional. got errors on NCI so skipped it and used pre-compiled static version
+cd source
+make STAR
+
+# write nanopolish module
+cd ~/mymodules
+mkdir star
+cd star
+vim 2.6.0c
+
+#paste this
+#%Module1.0#####################################################################
+source /opt/Modules/extensions/extensions.tcl
+proc ModulesHelp { } {
+        puts stderr "\tAdds star bin directory to the path"
+}
+module-whatis    "star"
+
+set starversion 2.6.0c
+prepend-path PATH /short/sd34/ap5514/myapps/star/2.6.0c/STAR-2.6.0c/bin/Linux_x86_64_static
