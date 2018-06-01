@@ -1,0 +1,24 @@
+# install stringtie
+mkdir -p /short/sd34/ap5514/myapps/stringtie/1.3.4
+export PATH=/short/sd34/ap5514/myapps/stringtie/1.3.4/bin:$PATH
+cd /short/sd34/ap5514/myapps/stringtie/1.3.4
+git clone https://github.com/gpertea/stringtie
+cd stringtie
+make release
+
+# write stringtie module
+cd ~/mymodules
+mkdir stringtie
+cd stringtie
+vim 1.3.4
+
+#paste this
+#%Module1.0#####################################################################
+source /opt/Modules/extensions/extensions.tcl
+proc ModulesHelp { } {
+        puts stderr "\tAdds stringtie bin directory to the path"
+}
+module-whatis    "stringtie"
+
+set stringtieversion 1.3.4
+prepend-path PATH /short/sd34/ap5514/myapps/stringtie/1.3.4/stringtie
