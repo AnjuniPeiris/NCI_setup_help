@@ -1,0 +1,36 @@
+# install subread for featurecounts feature
+mkdir -p /short/sd34/ap5514/myapps/subread/1.6.2 # updata for each version
+export PATH=/short/sd34/ap5514/myapps/subread/1.6.2/bin:$PATH
+cd /short/sd34/ap5514/myapps/subread/1.6.2
+wget https://sourceforge.net/projects/subread/files/subread-1.6.2/subread-1.6.2-Linux-x86_64.tar.gz/download/
+mv download download.tar.gz   # change downloaded file name to end in "tar.gz" so it can unzip
+tar -xzf download.tar.gz     # "download" is added after wget url to give the name that the file will save as, for some reason
+cd subread-1.6.2-Linux-x86_64/
+export PATH=/short/sd34/ap5514/myapps/subread/1.6.2/subread-1.6.2-Linux-x86_64/bin:$PATH
+
+
+# write subread module
+cd ~/mymodules
+mkdir subread
+cd subread
+vim 1.6.2
+
+#paste this
+#%Module1.0#####################################################################
+source /opt/Modules/extensions/extensions.tcl
+proc ModulesHelp { } {
+        puts stderr "\tAdds subread bin directory to the path"
+}
+module-whatis    "subread"
+
+set subreadversion 1.6.2
+prepend-path PATH /short/sd34/ap5514/myapps/subread/1.6.2/subread-1.6.2-Linux-x86_64/bin
+
+---------------------------------------------------------------------------------
+# on fisher:
+cd /home/anjuni/myapps
+mkdir -p subread/1.6.2
+cd /home/anjuni/myapps/subread/1.6.2
+wget https://sourceforge.net/projects/subread/files/subread-1.6.2/subread-1.6.2-Linux-x86_64.tar.gz/
+mv index.html index.html.tar.gz   # without "download" at the end of the wget url, the file saves as "index.html"
+tar -xzf index.html.tar.gz
