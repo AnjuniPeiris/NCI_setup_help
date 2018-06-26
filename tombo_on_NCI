@@ -44,3 +44,15 @@ soft-prereq R/3.4.0
 set tomboversion 1.2.1
 prepend-path PATH /short/sd34/ap5514/myapps/tombo/1.2.1/bin/
 prepend-path PYTHONPATH /short/sd34/ap5514/myapps/tombo/1.2.1/lib/python3.5/site-packages
+
+
+
+# To install newer version of tombo
+
+#set paths
+mkdir -p /short/sd34/ap5514/myapps/tombo/1.2.1/lib/python3.5/site-packages
+export PYTHONPATH=/short/sd34/ap5514/myapps/tombo/1.2.1/lib/python3.5/site-packages
+mkdir -p /short/sd34/ap5514/myapps/tombo/1.2.1/bin
+export PATH=/short/sd34/ap5514/myapps/tombo/1.2.1/bin:$PATH
+cd /short/sd34/ap5514/myapps/tombo/1.2.1/tombo
+python3 setup.py install --prefix=/short/sd34/ap5514/myapps/tombo/1.2.1
