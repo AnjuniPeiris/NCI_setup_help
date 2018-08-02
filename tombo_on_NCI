@@ -9,7 +9,6 @@ mkdir -p /short/sd34/ap5514/myapps/tombo/1.2.1
 cd /short/sd34/ap5514/myapps/tombo/1.2.1
 
 # Install pip package (numpy install required before tombo for cython optimization) and upgrade pip to environment
-pip3 install ont-tombo[full]
 pip3 install ont-tombo[full] --upgrade pip --prefix /short/sd34/ap5514/myapps/tombo/1.2.1 --ignore-installed
 
 # Install python requirements
