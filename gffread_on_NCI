@@ -1,0 +1,24 @@
+# install subread for featurecounts feature
+mkdir -p /short/sd34/ap5514/myapps/gffread/0.9.12 # updata for each version
+cd /short/sd34/ap5514/myapps/gffread/0.9.12
+git clone https://github.com/gpertea/gclib
+git clone https://github.com/gpertea/gffread
+cd gffread
+make
+
+# write subread module
+cd ~/mymodules
+mkdir gffread
+cd gffread
+vim 0.9.12
+
+#paste this
+#%Module1.0#####################################################################
+source /opt/Modules/extensions/extensions.tcl
+proc ModulesHelp { } {
+        puts stderr "\tAdds gffread bin directory to the path"
+}
+module-whatis    "gffread"
+
+set subreadversion 0.9.12
+prepend-path PATH /short/sd34/ap5514/myapps/gffread/0.9.12/gffread
